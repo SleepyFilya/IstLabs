@@ -1,0 +1,341 @@
+[
+  {
+    "rule_name" : "ask_design",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Design", 0 ] } ]
+            },
+    "right": { "func": "set", "arg":
+                                  [ "Design",
+                                    { "func": "yes_or_no", "arg": "Is laptop design important?: "} ]
+             }
+  },
+  {
+    "rule_name" : "ask_unusual_color",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Design", "yes" ] },
+                                    { "func": "eq", "arg": [ "Color", 0 ] } ]
+            },
+    "right": { "func": "set", "arg":
+                                  [ "Color",
+                                    { "func": "yes_or_no", "arg": "Do you want a laptop with an unusual color?: "} ]
+             }
+  },
+  {
+    "rule_name" : "ask_keyboard_backlight",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Design", "yes" ] },
+                                    { "func": "eq", "arg": [ "Keyboard", 0 ] } ]
+            },
+    "right": { "func": "set", "arg":
+                                  [ "Keyboard",
+                                    { "func": "yes_or_no", "arg": "Do you want a keyboard backlight?: "} ]
+             }
+  },
+  {
+    "rule_name" : "ask_budget",
+    "left":{"func": "and",
+            "arg": [{"func": "eq", "arg": [ "Solution", 0]},
+                    {"func": "eq", "arg": [ "Budget", 0]}]
+           },
+    "right": {"func": "set",
+              "arg": ["Budget",
+                      {"func": "yes_or_no", "arg": "Do you need a more budget laptop option?:"}]
+             }
+  },
+  {
+    "rule_name" : "ask_for_work",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", 0 ] } ]
+            },
+    "right": { "func": "set", "arg":
+                                  [ "Work",
+                                    { "func": "yes_or_no", "arg": "Do you need a laptop for work?: " } ]
+             }
+  },
+  {
+    "rule_name" : "ask_display_size",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "no" ] },
+                                    { "func": "eq", "arg": ["Size", 0] } ]
+            },
+    "right": { "func": "set", "arg":
+                                  [ "Size",
+                                    { "func": "ask_question", "arg": ["Choose the display size (13.3 / 15.6 / 17.3): ", 13.3, 15.6, 17.3]} ]
+             }
+  },
+  {
+    "rule_name" : "ask_touchscreen",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "yes" ] },
+                                    { "func": "eq", "arg": ["Touchscreen", 0] } ]
+            },
+    "right": { "func": "set", "arg":
+                                  [ "Touchscreen",
+                                    { "func": "yes_or_no", "arg": "Need a touchscreen display?: "} ]
+             }
+  },
+
+
+
+  {
+    "rule_name" : "answer_type_1",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "yes" ] },
+                                    { "func": "eq", "arg": [ "Keyboard", "yes" ] },
+                                    { "func": "eq", "arg": [ "Design", "yes" ] },
+                                    { "func": "eq", "arg": ["Color", "yes"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you HP Pavilion 15-eh 1159ur 601D7EA" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_2",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "no" ] },
+                                    { "func": "eq", "arg": [ "Keyboard", "yes" ] },
+                                    { "func": "eq", "arg": [ "Design", "yes" ] },
+                                    { "func": "eq", "arg": ["Color", "yes"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you Acer Swift 3 SF314-42-R7EN" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_3",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "yes" ] },
+                                    { "func": "eq", "arg": [ "Keyboard", "no" ] },
+                                    { "func": "eq", "arg": [ "Design", "yes" ] },
+                                    { "func": "eq", "arg": ["Color", "yes"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you Acer Aspire 1 A115-32-P7AU" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_4",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "no" ] },
+                                    { "func": "eq", "arg": [ "Keyboard", "no" ] },
+                                    { "func": "eq", "arg": [ "Design", "yes" ]},
+                                    { "func": "eq", "arg": ["Color", "yes"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you Acer Aspire 3 A315-56-33Z3" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_5",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "yes" ] },
+                                    { "func": "eq", "arg": [ "Keyboard", "yes" ] },
+                                    { "func": "eq", "arg": [ "Design", "yes" ] },
+                                    { "func": "eq", "arg": ["Color", "no"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you HP Pavilion Aero 13-be0069ur" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_6",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "no" ] },
+                                    { "func": "eq", "arg": [ "Keyboard", "yes" ] },
+                                    { "func": "eq", "arg": [ "Design", "yes" ] },
+                                    { "func": "eq", "arg": ["Color", "no"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you Acer Swift 3 SF314-43" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_7",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "yes" ] },
+                                    { "func": "eq", "arg": [ "Keyboard", "no" ] },
+                                    { "func": "eq", "arg": [ "Design", "yes" ] },
+                                    { "func": "eq", "arg": ["Color", "no"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you Acer Aspire 3 A315-34-C9WH"} ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_8",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "no" ] },
+                                    { "func": "eq", "arg": [ "Keyboard", "no" ] },
+                                    { "func": "eq", "arg": [ "Design", "yes" ] },
+                                    { "func": "eq", "arg": ["Color", "no"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you Acer Aspire 3 A315-34" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_9",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "yes" ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "no" ] },
+                                    { "func": "eq", "arg": ["Size", "13.3"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you Lenovo ThinkBook 13s G2 ITL" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_10",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "no" ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "no" ] },
+                                    { "func": "eq", "arg": ["Size", "13.3"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you ASUS ZenBook Flip 13 UX363EA-HP785W" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_11",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "yes" ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "no" ] },
+                                    { "func": "eq", "arg": ["Size", "15.6"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you ASUS R522MA-BQ862W" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_12",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "no" ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "no" ] },
+                                    { "func": "eq", "arg": ["Size", "15.6"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you HUAWEI MateBook D 15" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_13",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "yes" ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "no" ] },
+                                    { "func": "eq", "arg": ["Size", "17.3"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you HP 17-cp0125ur" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_14",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "no" ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "no" ] },
+                                    { "func": "eq", "arg": ["Size", "17.3"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you HP 17-CP0138UR" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_15",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "yes" ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "yes" ] },
+                                    { "func": "eq", "arg": ["Touchscreen", "yes"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you Lenovo IdeaPad Flex 5 14ITL05" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_16",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "no" ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "yes" ] },
+                                    { "func": "eq", "arg": ["Touchscreen", "yes"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you MSI Summit E16 Flip Evo A11MT-204RU" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_17",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "yes" ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "yes" ] },
+                                    { "func": "eq", "arg": ["Touchscreen", "no"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you Acer Aspire 3 A315-56" } ]
+             }
+  },
+  {
+    "rule_name" : "answer_type_18",
+    "left": { "func": "and", "arg":
+                                  [ { "func": "eq", "arg": [ "Solution", 0 ] },
+                                    { "func": "eq", "arg": [ "Budget", "no" ] },
+                                    { "func": "eq", "arg": [ "Design", "no" ] },
+                                    { "func": "eq", "arg": [ "Work", "yes" ] },
+                                    { "func": "eq", "arg": ["Touchscreen", "no"] } ]
+            },
+    "right": { "func": "and", "arg":
+                                  [ { "func": "set", "arg": [ "Solution", 1] },
+                                    { "func": "print", "arg": "A laptop will do for you Acer Aspire 3 A315-23-R384" } ]
+             }
+  }
+]
