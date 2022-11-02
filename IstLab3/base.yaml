@@ -1,0 +1,88 @@
+entity:
+  - id: id01
+    name: Убийство на поле для гольфа
+  - id: id02
+    name: Убийство в Восточном экспрессе
+  - id: id03
+    name: Гарри Поттер и Принц-полукровка
+  - id: id04
+    name: Дубровский
+  - id: id05
+    name: Мастер и Маргарита
+
+  - id: id06
+    name: Детектив
+  - id: id07
+    name: Роман
+
+  - id: id08
+    name: Убийство в восточном экспрессе (2010)
+  - id: id09
+    name: Harry Potter and the Half-Blood Prince (2009)
+  - id: id10
+    name: Дубровский (2014)
+  - id: id11
+    name: Мститель (1959)
+  - id: id12
+    name: Pilatus and Andere (1972)
+  - id: id13
+    name: Мастер и Маргарита (1994)
+
+  - id: id14
+    name: Эркюль Пуаро
+  - id: id15
+    name: Severus Snape
+  - id: id16
+    name: Маша Троекурова
+  - id: id17
+    name: Воланд
+
+connection:
+  - parent: id01
+    child: id06
+    connect: Жанр
+  - parent: id02
+    child: id07
+    connect: Жанр
+  - parent: id02
+    child: id08
+    connect: Киноадаптация
+  - parent: id03
+    child: id06
+    connect: Жанр
+  - parent: id03
+    child: id09
+    connect: Киноадаптация
+  - parent: id04
+    child: id07
+    connect: Жанр
+  - parent: id04
+    child: id10
+    connect: Киноадаптация
+  - parent: id04
+    child: id11
+    connect: Киноадаптация
+  - parent: id05
+    child: id07
+    connect: Жанр
+  - parent: id05
+    child: id12
+    connect: Киноадаптация
+  - parent: id05
+    child: id13
+    connect: Киноадаптация
+  - parent: id14
+    child: id01
+    connect: Герой произведения
+  - parent: id14
+    child: id02
+    connect: Герой произведения
+  - parent: id15
+    child: id03
+    connect: Герой произведения
+  - parent: id16
+    child: id04
+    connect: Герой произведения
+  - parent: id17
+    child: id05
+    connect: Герой произведения
